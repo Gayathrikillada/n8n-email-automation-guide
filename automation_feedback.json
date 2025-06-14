@@ -1,0 +1,90 @@
+{
+  "name": "automation feedback",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1mP1_eiaN8DDe4mxiqga7F13bA3ItsxXSpMld9pz8UhA/edit?resourcekey=&gid=570843855#gid=570843855",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1mP1_eiaN8DDe4mxiqga7F13bA3ItsxXSpMld9pz8UhA/edit?resourcekey=&gid=570843855#gid=570843855",
+          "mode": "url"
+        },
+        "event": "rowAdded",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "06ee06ae-ebb0-4abe-ac40-5afa04f446f8",
+      "name": "Google Sheets Trigger",
+      "credentials": {
+        "googleSheetsTriggerOAuth2Api": {
+          "id": "hZ50msjSPLMU3F2O",
+          "name": "Google Sheets Trigger account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{$json[\"Email\"]}}",
+        "subject": "Thanks for your feedback!",
+        "message": "=Hi {{$json[\"Name\"]}},<br><br> Thank you for your feedback! We really appreciate your response.<br><br> Best regards,<br> SGC Team",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        260,
+        0
+      ],
+      "id": "bcccc9a8-4b15-457c-ae00-87456000864b",
+      "name": "Gmail",
+      "webhookId": "b82a4655-a954-46e2-999a-a01b24eca078",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "7vvh38siUJXPoMUb",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Google Sheets Trigger": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "234ffaed-3f8e-4f93-81cf-d3f900deffaf",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c071f341625756708afbbdc2a78fe6899b33ee774aba985217de3f691ef2980d"
+  },
+  "id": "gzpme0lOLFUflRua",
+  "tags": []
+}
